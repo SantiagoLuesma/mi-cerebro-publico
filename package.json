@@ -8,8 +8,7 @@
     "gen": "tsx scripts/generate-vault-data.ts",
     "predev": "tsx scripts/generate-vault-data.ts",
     "dev": "next dev",
-    "prebuild": "tsx scripts/generate-vault-data.ts",
-    "build": "next build",
+    "build": "tsx scripts/generate-vault-data.ts && next build",
     "preview": "npx serve out",
     "start": "npx serve out"
   },
