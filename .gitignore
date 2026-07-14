@@ -1,0 +1,22 @@
+# dependencies
+node_modules
+.pnp
+.pnp.*
+
+# next.js
+.next
+out
+next-env.d.ts
+
+# generated build data (regenerated from the vault)
+src/generated
+
+# committed copy of the vault used for builds/deploy (real source stays in .env.local)
+# vault/
+
+# env
+.env*.local
+
+# misc
+.DS_Store
+*.log

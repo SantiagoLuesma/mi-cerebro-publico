@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #03060a;
+  --color-bg-soft: #070d12;
+  --color-panel: #0a141b;
+  --color-neon: #00ff9c;
+  --color-neon-dim: #0bbf78;
+  --color-neon-deep: #064e3b;
+  --color-ghost: #2a3a3a;
+  --color-grid: rgba(0, 255, 156, 0.06);
+  --color-ink: #d7fff0;
+  --color-ink-dim: #6f998c;
+
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, "Menlo", monospace;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-neon: 0 0 12px rgba(0, 255, 156, 0.45);
+  --shadow-neon-lg: 0 0 32px rgba(0, 255, 156, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100dvh;
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px),
+    radial-gradient(circle at 50% -10%, rgba(0, 255, 156, 0.12), transparent 55%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
+
+::selection {
+  background: rgba(0, 255, 156, 0.3);
+  color: #fff;
+}
+
+/* Glow helpers */
+.glow {
+  text-shadow: 0 0 8px rgba(0, 255, 156, 0.55);
+}
+.glow-border {
+  border: 1px solid rgba(0, 255, 156, 0.35);
+  box-shadow: var(--shadow-neon);
+}
+.panel {
+  background: rgba(10, 20, 27, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 156, 0.18);
+}
+
+/* Scanline overlay for the futuristic feel */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 156, 0.03) 0px,
+    rgba(0, 255, 156, 0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+}
+
+/* fade-in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+
+/* pulsing dot */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-pulse-dot {
+    animation: none;
+  }
+}
